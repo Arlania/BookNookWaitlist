@@ -556,28 +556,28 @@
         }
       });
 
-      form.addEventListener("submit", (event) => {
-        event.preventDefault();
+      // form.addEventListener("submit", (event) => {
+      //   event.preventDefault();
 
-        const formData = new FormData(form);
-        const email = formData.get("email");
-        const role = formData.get("role");
-        const otherRole = formData.get("otherRole");
-        const waitlist = JSON.parse(
-          localStorage.getItem("bookNookWaitlist") || "[]"
-        );
+      //   const formData = new FormData(form);
+      //   const email = formData.get("email");
+      //   const role = formData.get("role");
+      //   const otherRole = formData.get("otherRole");
+      //   const waitlist = JSON.parse(
+      //     localStorage.getItem("bookNookWaitlist") || "[]"
+      //   );
 
-        waitlist.push({
-          email,
-          role: role === "Other" ? otherRole : role,
-          roleCategory: role,
-          joinedAt: new Date().toISOString(),
-        });
+      //   waitlist.push({
+      //     email,
+      //     role: role === "Other" ? otherRole : role,
+      //     roleCategory: role,
+      //     joinedAt: new Date().toISOString(),
+      //   });
 
-        localStorage.setItem("bookNookWaitlist", JSON.stringify(waitlist));
-        form.reset();
-        message.textContent = "Thank you. You are on the release list.";
-      });
+      //   localStorage.setItem("bookNookWaitlist", JSON.stringify(waitlist));
+      //   form.reset();
+      //   message.textContent = "Thank you. You are on the release list.";
+      // });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
