@@ -579,5 +579,64 @@
         message.textContent = "Thank you. You are on the release list.";
       });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script>
+      const SUPABASE_URL = "https://nnijsdciucjrhtagoxha.supabase.co";
+      const SUPABASE_KEY = "sb_publishable_AseQdEqedwOUjn4HYICF-w_jbSxjBDM";
+
+      const supabaseClient = supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+      );
+      const waitlistForm = document.getElementById("waitlist-form");
+      const waitlistEmailInput = document.getElementById("email");
+      const waitlistRoleSelect = document.getElementById("role");
+      const waitlistOtherRoleInput = document.getElementById("other-role");
+      const waitlistFormMessage = document.getElementById("form-message");
+      const waitlistSubmitButton = waitlistForm.querySelector(
+        'button[type="submit"]'
+      );
+
+      waitlistForm.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        const email = waitlistEmailInput.value.trim().toLowerCase();
+        const role = waitlistRoleSelect.value;
+
+        waitlistSubmitButton.disabled = true;
+        waitlistSubmitButton.textContent = "Joining...";
+        waitlistFormMessage.textContent = "";
+
+        const { error } = await supabaseClient
+          .from("waitlist")
+          .insert({
+            email: email,
+            role: role
+          });
+
+        if (error) {
+          console.error(error);
+
+          if (error.code === "23505") {
+            waitlistFormMessage.textContent =
+              "This email is already on the waitlist.";
+          } else {
+            waitlistFormMessage.textContent =
+              "Something went wrong. Please try again.";
+          }
+        } else {
+          waitlistFormMessage.textContent = "You joined the waitlist!";
+          waitlistForm.reset();
+
+          if (waitlistOtherRoleInput) {
+            waitlistOtherRoleInput.value = "";
+          }
+        }
+
+        waitlistSubmitButton.disabled = false;
+        waitlistSubmitButton.textContent = "Join the Waitlist";
+      });
+    </script>
   </body>
 </html>
