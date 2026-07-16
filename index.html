@@ -46,6 +46,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        min-height: clamp(64px, 7.5vw, 92px);
         padding: 4px clamp(22px, 5vw, 88px);
         background: var(--ink);
         color: var(--cream);
@@ -72,7 +73,9 @@
         align-items: center;
         justify-content: center;
         gap: 10px;
-        padding-inline: 12px;
+        width: fit-content;
+        margin: 0 auto;
+        padding-inline: 0;
         font-size: clamp(1.55rem, 2.6vw, 3.1rem);
         font-weight: 750;
         text-align: center;
@@ -171,9 +174,10 @@
         gap: 14px;
       }
 
-      label {
+      .waitlist-form > label:not(.agreement-check),
+      .other-role-field label {
         font-size: 0.95rem;
-        font-weight: 800;
+        font-weight: 400;
       }
 
       input,
@@ -399,7 +403,7 @@
     <header class="site-header">
       <a class="brand" href="#top" aria-label="The Free Book Nook waitlist">
         <img
-          src="../FreeBookNook/The-Free-Book-Nook/assets/book-logo.png"
+          src="assets/book-logo.png"
           alt=""
           class="brand-logo"
         />
@@ -443,11 +447,11 @@
             <label for="role">I am joining as</label>
             <select id="role" name="role" required>
               <option value="">Choose one</option>
-              <option>Reader</option>
-              <option>Author</option>
-              <option>Publisher</option>
-              <option>Educator or librarian</option>
-              <option>Other</option>
+              <option value="reader">Reader</option>
+              <option value="author">Author</option>
+              <option value="publisher">Publisher</option>
+              <option value="educator_librarian">Educator or librarian</option>
+              <option value="other">Other</option>
             </select>
 
             <div class="other-role-field" id="other-role-field" hidden>
