@@ -349,12 +349,47 @@
 
       .footer {
         display: flex;
+        align-items: center;
         justify-content: space-between;
         gap: 20px;
         padding: 26px clamp(24px, 6vw, 96px);
         background: var(--ink);
         color: rgba(255, 250, 240, 0.76);
         font-size: 0.95rem;
+      }
+
+      .footer-right {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .instagram-link {
+        display: inline-flex;
+        width: 30px;
+        height: 30px;
+        align-items: center;
+        justify-content: center;
+        color: var(--cream);
+        text-decoration: none;
+        transition: color 180ms ease, transform 180ms ease;
+      }
+
+      .instagram-link:hover,
+      .instagram-link:focus-visible {
+        color: var(--gold);
+        transform: translateY(-1px);
+      }
+
+      .instagram-link:focus-visible {
+        outline: 3px solid rgba(242, 214, 164, 0.42);
+        outline-offset: 3px;
+      }
+
+      .instagram-link svg {
+        display: block;
+        width: 24px;
+        height: 24px;
       }
 
       @media (max-width: 920px) {
@@ -568,7 +603,30 @@
 
     <footer class="footer">
       <span>The Free Book Nook</span>
-      <span>Free legal reading, built with creators in mind.</span>
+      <span class="footer-right">
+        <a
+          class="instagram-link"
+          href="https://www.instagram.com/free_book_nook?igsh=MzRlODBiNWFlZA=="
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="The Free Book Nook on Instagram"
+        >
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+        <span>Free legal reading, built with creators in mind.</span>
+      </span>
     </footer>
 
     <script>
