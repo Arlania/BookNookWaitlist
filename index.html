@@ -496,7 +496,7 @@
                 name="otherRole"
                 type="text"
                 autocomplete="off"
-                placeholder="Student, translator, nonprofit partner..."
+                placeholder="Translator, nonprofit partner, philanthropist..."
               />
             </div>
 
@@ -637,7 +637,7 @@
       const otherRoleInput = document.querySelector("#other-role");
 
       roleSelect.addEventListener("change", () => {
-        const isOther = roleSelect.value === "Other";
+        const isOther = roleSelect.value === "other";
 
         otherRoleField.hidden = !isOther;
         otherRoleInput.required = isOther;
@@ -694,6 +694,7 @@
 
         const email = waitlistEmailInput.value.trim().toLowerCase();
         const role = waitlistRoleSelect.value;
+        const otherRole = waitlistOtherRoleInput.value.trim();
 
         waitlistSubmitButton.disabled = true;
         waitlistSubmitButton.textContent = "Joining...";
@@ -703,7 +704,8 @@
           .from("waitlist")
           .insert({
             email: email,
-            role: role
+            role: role,
+            other_role: role === "other" ? otherRole : null
           });
 
         if (error) {
@@ -722,6 +724,11 @@
 
           if (waitlistOtherRoleInput) {
             waitlistOtherRoleInput.value = "";
+            waitlistOtherRoleInput.required = false;
+          }
+
+          if (otherRoleField) {
+            otherRoleField.hidden = true;
           }
         }
 
