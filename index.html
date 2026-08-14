@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Join the Waitlist | The Free Book Nook</title>
+    <title>Join the Waitlist | FreeBookery</title>
     <link rel="icon" type="image/png" href="assets/book-logo.png" />
     <style>
       :root {
@@ -47,8 +47,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        min-height: clamp(64px, 7.5vw, 92px);
-        padding: 4px clamp(22px, 5vw, 88px);
+        min-height: clamp(52px, 5.5vw, 70px);
+        padding: 2px clamp(22px, 5vw, 88px);
         background: var(--ink);
         color: var(--cream);
         box-shadow: 0 10px 30px rgba(16, 11, 43, 0.18);
@@ -77,15 +77,15 @@
         width: fit-content;
         margin: 0 auto;
         padding-inline: 0;
-        font-size: clamp(1.55rem, 2.6vw, 3.1rem);
+        font-size: clamp(1.4rem, 2vw, 2.2rem);
         font-weight: 750;
         text-align: center;
       }
 
       .brand-logo {
         display: block;
-        width: clamp(48px, 5vw, 76px);
-        height: clamp(48px, 5vw, 76px);
+        width: clamp(40px, 4vw, 56px);
+        height: clamp(40px, 4vw, 56px);
         object-fit: contain;
         flex: 0 0 auto;
       }
@@ -95,13 +95,15 @@
         grid-template-columns: minmax(0, 1fr) minmax(340px, 0.78fr);
         align-items: center;
         gap: clamp(36px, 6vw, 86px);
-        min-height: calc(100vh - 76px);
-        padding: clamp(52px, 8vw, 112px) clamp(24px, 6vw, 96px)
+        min-height: calc(100vh - clamp(52px, 5.5vw, 70px));
+        padding: clamp(24px, 4vw, 52px) clamp(24px, 6vw, 96px)
           clamp(44px, 5vw, 72px);
       }
 
       .hero-copy {
+        align-self: start;
         max-width: 780px;
+        margin-top: clamp(16px, 2vw, 28px);
       }
 
       .eyebrow {
@@ -394,7 +396,7 @@
 
       @media (max-width: 920px) {
         .site-header {
-          padding-block: 10px;
+          padding-block: 4px;
         }
 
         .hero,
@@ -437,13 +439,13 @@
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href="#top" aria-label="The Free Book Nook waitlist">
+      <a class="brand" href="#top" aria-label="FreeBookery waitlist">
         <img
           src="assets/book-logo.png"
           alt=""
           class="brand-logo"
         />
-        <span>The Free Book Nook</span>
+        <span>FreeBookery</span>
       </a>
     </header>
 
@@ -456,7 +458,7 @@
             <span>Creators get paid.</span>
           </h1>
           <p>
-            The Free Book Nook is building a legal digital reading home where
+            FreeBookery is building a legal digital reading home where
             readers discover books for free and creators are fairly compensated through
             donations, sponsors, grants, and reader-supported revenue.
           </p>
@@ -541,40 +543,39 @@
       </section>
 
       
-      <section class="promise" aria-labelledby="promise-title">
-        <h2 id="promise-title">About</h2>
+      <section class="promise" aria-labelledby="about-title">
+        <h2 id="about-title">About</h2>
         <p>
-          The Free Book Nook is an upcoming nonprofit that will offer free e-books to anyone, anywhere, while compensating authors.
+          FreeBookery is an upcoming nonprofit that will offer free e-books to anyone, anywhere, while compensating authors.
           <br/> We operate without a profit incentive, so the majority of money will go directly to authors/publishers. Only a small portion will be used to maintain our services. This makes our system extremely cost-effective.
           <br/> Additionally, offering free e-books in this way renders e-book piracy redundant. Piracy statistics have spiked in recent years, particularly impacting independent authors. By financially supporting authors in being able to make their content freely available, we aim to make material more accessible to readers globally.
           <br/> We aim to make this system sustainable long-term by allowing a specific number of “reads” on the site based on available funds, so donations and sponsorships have a direct impact in making reading available to everyone.
-        <hr width="100%" size="2">
+          <hr width="100%" size="2">
         </p>
 
         <h2>Mission</h2>
         <p>
-          We’re a nonprofit aiming to eliminate monetary and geographical barriers for readers by making free e-books legally available to anyone, while compensating creators. 
-        <hr width="100%" size="2">
+          We’re a nonprofit aiming to eliminate monetary and geographical barriers for readers by making free e-books legally available to anyone, while compensating creators.
+          <hr width="100%" size="2">
         </p>
-        
+
         <h2>Vision</h2>
         <p>
           We envision a world where money or location isn’t a barrier to authors or readers.
-        <hr width="100%" size="2">
+          <hr width="100%" size="2">
         </p>
 
         <h2>Values</h2>
         <p>
           Creativity: we wish to encourage the sharing of unique human experiences and ideas.
           <br/>Learning: we believe that reading is core to education and highly beneficial to daily life.
-        <hr width="100%" size="2">
+          <hr width="100%" size="2">
         </p>
-        
       </section>
 
 
-      <section class="promise" aria-labelledby="promise-title">
-        <h2 id="promise-title">What we are working toward</h2>
+      <section class="promise" aria-labelledby="roadmap-title">
+        <h2 id="roadmap-title">What we are working toward</h2>
         <ol class="steps">
           <li>
             <span>1</span>
@@ -586,7 +587,7 @@
           <li>
             <span>2</span>
             <div>
-              The Free Book Nook contacts authors and publishers to bring titles
+              FreeBookery contacts authors and publishers to bring titles
               onto the platform legally.
             </div>
           </li>
@@ -602,14 +603,14 @@
     </main>
 
     <footer class="footer">
-      <span>The Free Book Nook</span>
+      <span>FreeBookery</span>
       <span class="footer-right">
         <a
           class="instagram-link"
-          href="https://www.instagram.com/free_book_nook?igsh=MzRlODBiNWFlZA=="
+          href="https://www.instagram.com/freebookery"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="The Free Book Nook on Instagram"
+          aria-label="FreeBookery on Instagram"
         >
           <svg
             aria-hidden="true"
