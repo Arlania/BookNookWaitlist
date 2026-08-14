@@ -435,6 +435,61 @@
           display: grid;
         }
       }
+        .about-section {
+            padding: 60px 20px;
+            background-color: #F7F2E7;
+        }
+
+        .about-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .about-card {
+            padding: 25px;
+            border-radius: 4px;
+            background-color: #F7F2E7;
+            border: 2px solid #100B2B;
+        }
+
+        .about-card h2 {
+            margin-top: 0;
+            margin-bottom: 12px;
+            color: #100B2B;
+        }
+
+        .about-card p {
+            line-height: 1.6;
+            color: #171310;
+        }
+
+        .about-card:hover {
+            transform: translateY(-4px);
+            transition: transform 0.25s ease;
+        }
+
+        .about-card:first-child {
+            grid-column: 1 / -1;
+            padding: 40px;
+        }
+
+        .about-card:first-child h2 {
+            font-size: 2.2rem;
+        }
+
+        /* Mobile layout */
+        @media (max-width: 768px) {
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .about-card:first-child {
+                grid-column: auto;
+            }
+        }
     </style>
   </head>
   <body>
@@ -520,8 +575,8 @@
         <article class="audience-card" id="readers">
           <h2>For readers</h2>
           <p>
-            Be first to search novels, manga, and
-            other digital books without paywalls.
+            Search novels, manga, and
+            other digital books without paywalls. Join a community of readers, write your honest opinion of books, and read articles by your favorite authors or bloggers.
           </p>
         </article>
 
@@ -529,15 +584,14 @@
           <h2>For authors</h2>
           <p>
             Follow a nonprofit platform designed to broaden access while
-            keeping creator payment part of the model from the beginning.
+            keeping creator payment part of the model from the beginning. Write articles about your books, and join an exclusive author community.
           </p>
         </article>
 
         <article class="audience-card" id="publishers">
           <h2>For publishers</h2>
           <p>
-            Stay close as we develop creator access, book requests, and a legal
-            distribution workflow for digital reading at public-interest scale.
+            Partner with us so we can deliver your titles for free, while providng compensation directly to you and your team of authors.
           </p>
         </article>
       </section>
