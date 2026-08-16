@@ -24,7 +24,13 @@
         box-sizing: border-box;
       }
 
+      html,
+      body {
+        overscroll-behavior-y: none;
+      }
+
       html {
+        background: var(--ink);
         scroll-behavior: smooth;
       }
 
@@ -88,6 +94,12 @@
         height: clamp(40px, 4vw, 56px);
         object-fit: contain;
         flex: 0 0 auto;
+      }
+
+      .contact-nav {
+        position: absolute;
+        right: clamp(22px, 5vw, 88px);
+        padding: 10px 0;
       }
 
       .hero {
@@ -380,7 +392,8 @@
         flex: 0 0 auto;
       }
 
-      .instagram-link {
+      .instagram-link,
+      .email-link {
         display: inline-flex;
         width: 30px;
         height: 30px;
@@ -392,12 +405,15 @@
       }
 
       .instagram-link:hover,
-      .instagram-link:focus-visible {
+      .instagram-link:focus-visible,
+      .email-link:hover,
+      .email-link:focus-visible {
         color: var(--gold);
         transform: translateY(-1px);
       }
 
-      .instagram-link:focus-visible {
+      .instagram-link:focus-visible,
+      .email-link:focus-visible {
         outline: 3px solid rgba(242, 214, 164, 0.42);
         outline-offset: 3px;
       }
@@ -406,6 +422,11 @@
         display: block;
         width: 24px;
         height: 24px;
+      }
+
+      .email-link {
+        font-size: 1.55rem;
+        line-height: 1;
       }
 
       @media (max-width: 920px) {
@@ -433,7 +454,19 @@
         }
 
         .brand {
-          font-size: 1.45rem;
+          gap: 6px;
+          margin: 0 auto 0 0;
+          font-size: 1.2rem;
+        }
+
+        .brand-logo {
+          width: 36px;
+          height: 36px;
+        }
+
+        .contact-nav {
+          right: 18px;
+          font-size: 0.84rem !important;
         }
 
         .hero,
@@ -516,6 +549,7 @@
         />
         <span>FreeBookery</span>
       </a>
+      <a class="contact-nav" href="contact.html">Contact Us</a>
     </header>
 
     <main id="top">
@@ -697,6 +731,14 @@ Lastly, we will encourage literary discussion through our platform's blogging an
             <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
             <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
           </svg>
+        </a>
+        <a
+          class="email-link"
+          href="mailto:info@freebookery.org"
+          aria-label="Email FreeBookery at info@freebookery.org"
+          title="info@freebookery.org"
+        >
+          <span aria-hidden="true">✉</span>
         </a>
         <span>Free legal reading, built with creators in mind.</span>
       </span>
