@@ -309,6 +309,12 @@
         transform: translateY(-2px);
       }
 
+      .submit-button:disabled {
+        cursor: wait;
+        opacity: 0.72;
+        transform: none;
+      }
+
       .form-status {
         min-height: 1.4em;
         margin: -14px 0 0;
@@ -513,19 +519,45 @@
     <script>
       const contactForm = document.querySelector("#contact-form");
       const formStatus = document.querySelector("#form-status");
+      const submitButton = contactForm.querySelector('button[type="submit"]');
 
-      contactForm.addEventListener("submit", (event) => {
+      contactForm.addEventListener("submit", async (event) => {
         event.preventDefault();
 
         const formData = new FormData(contactForm);
-        const name = formData.get("name").trim();
-        const email = formData.get("email").trim();
-        const message = formData.get("message").trim();
-        const subject = `FreeBookery website message from ${name}`;
-        const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+        const originalButtonText = submitButton.textContent;
 
-        formStatus.textContent = "Opening your email app…";
-        window.location.href = `mailto:info@freebookery.org?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        submitButton.disabled = true;
+        submitButton.textContent = "Sending…";
+        formStatus.textContent = "Sending your message…";
+
+        try {
+          const response = await fetch("/api/contact", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              name: formData.get("name"),
+              email: formData.get("email"),
+              message: formData.get("message"),
+            }),
+          });
+          const result = await response.json();
+
+          if (!response.ok) {
+            throw new Error(result.error || "The message could not be sent.");
+          }
+
+          contactForm.reset();
+          formStatus.textContent =
+            "Thank you! Your message has been sent successfully.";
+        } catch (error) {
+          console.error(error);
+          formStatus.textContent =
+            "Sorry, your message could not be sent. Please email info@freebookery.org directly.";
+        } finally {
+          submitButton.disabled = false;
+          submitButton.textContent = originalButtonText;
+        }
       });
     </script>
   </body>
