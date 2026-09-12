@@ -79,6 +79,23 @@
       button { border: 0; background: var(--paper); color: var(--ink); cursor: pointer; font-weight: 850; }
       button:hover { background: var(--gold); }
       button:disabled { cursor: wait; opacity: 0.72; }
+      .code-field { position: relative; }
+      .code-field input { padding-right: 54px; }
+      .code-visibility-toggle {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        display: grid;
+        width: 36px;
+        min-height: 36px;
+        padding: 8px;
+        place-items: center;
+        border-radius: 6px;
+        background: transparent;
+        color: rgba(255, 250, 240, 0.78);
+      }
+      .code-visibility-toggle:hover, .code-visibility-toggle:focus-visible { background: rgba(255, 250, 240, 0.12); }
+      .code-visibility-toggle svg { width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-width: 1.7; }
       .form-status { min-height: 1.4em; margin: 0; color: var(--gold); text-align: center; font-size: 0.94rem; font-weight: 700; }
 
       @media (max-width: 560px) {
@@ -104,7 +121,12 @@
         <p>If you received an invitation to preview Free Bookery, enter its code below.</p>
         <form id="invite-form">
           <label for="invite-code">Invite code</label>
-          <input id="invite-code" name="code" type="password" autocomplete="one-time-code" maxlength="200" placeholder="Enter your code" required />
+          <div class="code-field">
+            <input id="invite-code" name="code" type="password" autocomplete="one-time-code" maxlength="200" placeholder="Enter your code" required />
+            <button class="code-visibility-toggle" id="code-visibility-toggle" type="button" aria-label="Show invite code" aria-pressed="false" title="Show invite code">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"></path><circle cx="12" cy="12" r="2.75"></circle></svg>
+            </button>
+          </div>
           <button type="submit">Continue to Free Bookery</button>
           <p class="form-status" id="invite-status" role="status" aria-live="polite"></p>
         </form>
@@ -116,6 +138,19 @@
       const codeInput = document.querySelector("#invite-code");
       const status = document.querySelector("#invite-status");
       const button = form.querySelector('button[type="submit"]');
+      const visibilityToggle = document.querySelector("#code-visibility-toggle");
+
+      visibilityToggle.addEventListener("click", () => {
+        const showing = codeInput.type !== "text";
+        codeInput.type = showing ? "text" : "password";
+        visibilityToggle.setAttribute("aria-label", showing ? "Hide invite code" : "Show invite code");
+        visibilityToggle.setAttribute("aria-pressed", String(showing));
+        visibilityToggle.title = showing ? "Hide invite code" : "Show invite code";
+        visibilityToggle.innerHTML = showing
+          ? '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"></path><circle cx="12" cy="12" r="2.75"></circle><path d="m4 4 16 16"></path></svg>'
+          : '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"></path><circle cx="12" cy="12" r="2.75"></circle></svg>';
+        codeInput.focus();
+      });
 
       form.addEventListener("submit", async (event) => {
         event.preventDefault();
