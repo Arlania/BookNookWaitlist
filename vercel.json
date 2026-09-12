@@ -16,6 +16,16 @@
       "source": "/contact/index.html",
       "destination": "/contact/",
       "permanent": true
+    },
+    {
+      "source": "/invite.html",
+      "destination": "/invite/",
+      "permanent": true
+    },
+    {
+      "source": "/invite/index.html",
+      "destination": "/invite/",
+      "permanent": true
     }
   ]
 }
